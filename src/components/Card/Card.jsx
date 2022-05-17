@@ -12,11 +12,11 @@ const Card = () => {
 
   const getAdvice = async () => {
     setLoading(true);
-    const res = await fetch("https://api.adviceslip.com/advice/76");
+    const res = await fetch("https://api.adviceslip.com/advice");
     const json = await res.json();
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 1000);
+    }, 1500);
     setAdvice({...json.slip});
   }
 
