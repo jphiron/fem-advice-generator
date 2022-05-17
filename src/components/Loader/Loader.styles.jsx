@@ -1,5 +1,6 @@
 import styled, { keyframes } from "styled-components";
 import { colors } from "../../style-variables";
+import { motion } from "framer-motion";
 
 const { neonGreen } = colors;
 
@@ -12,12 +13,12 @@ const spinnerAnimation = keyframes`
   }
 `;
 
-const Spinner = styled.div`
+const Spinner = styled(motion.div)`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 60px;
-  width: 60px;
+  height: 100%;
+  width: 100%;
   margin-bottom: 2.5rem;
 
   &:after {

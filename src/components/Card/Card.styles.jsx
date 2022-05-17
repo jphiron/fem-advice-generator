@@ -1,33 +1,49 @@
 import styled from "styled-components";
+import { motion } from "framer-motion";
 import { colors } from "../../style-variables";
 
 const { neonGreen, lightCyan, grayishBlue, darkGrayishBlue, darkBlue } = colors;
 
-const Container = styled.div`
+const Container = styled(motion.div)`
   display: flex;
   position: relative;
   flex-flow: column nowrap;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-evenly;
   background: ${darkGrayishBlue};
-  max-width: 450px;
-  padding: 3rem 2.5rem 4rem 2.5rem;
+  width: 450px;
+  height: 260px;
+  padding: 2rem 2.5rem 4rem 2.5rem;
   border-radius: 15px;
+  transition: all .2s;
+
+  @media screen and (max-width: 570px) {
+    width: 100%;
+  }
 
   @media screen and (max-width: 410px) {
-    padding: 2rem 1.1rem 3rem;
+    padding: 3rem 1.1rem 3rem;
   }
 `;
+
+const Body = styled.div`
+  max-width: 100%;
+  height: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+`
 
 const Label = styled.h2`
   font-size: 0.9rem;
   text-transform: uppercase;
   color: ${neonGreen};
   letter-spacing: 3px;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
 `;
 
-const Quote = styled.p`
+const Quote = styled(motion.p)`
   margin-bottom: 2.5rem;
   text-align: center;
   font-size: 28px;
@@ -59,4 +75,4 @@ const Button = styled.button`
   }
 `;
 
-export { Container, Label, Quote, Button };
+export { Container, Label, Quote, Button, Body };
