@@ -4,7 +4,7 @@ import MobileSeparator from "../../assets/images/pattern-divider-mobile.svg";
 import DesktopSeparator from "../../assets/images/pattern-divider-desktop.svg";
 import { useEffect, useState } from "react";
 import { Loader } from "../Loader/Loader";
-import { AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 
 const Card = () => {
   const [loading, setLoading] = useState(false);
@@ -17,40 +17,53 @@ const Card = () => {
     const timer = setTimeout(() => {
       setLoading(false);
     }, 1500);
-    setAdvice({...json.slip});
-  }
+    setAdvice({ ...json.slip });
+  };
 
   useEffect(() => {
     getAdvice();
-  }, [])
+  }, []);
 
   return (
     <Container>
-      <AnimatePresence exitBeforeEnter>
-        <Body>
+      <Body>
+        <AnimatePresence exitBeforeEnter>
           {loading ? (
-            <Loader key="loader" layoutId="loader" />
+            <Loader
+              key="loader"
+              layoutId="loader"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: .2 }}
+            />
           ) : (
-            <>
+            <motion.div
+              style={{
+                display: "flex",
+                flexFlow: "column nowrap",
+                alignItems: "center",
+              }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: .2 }}
+            >
               <Label>Advice #{advice.id}</Label>
-              <Quote
-                key="quote"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                layoutId="quote"
-              >
-                “{advice.advice.replace("Ã¤", "ä")}”
-              </Quote>
-            </>
+              <Quote>“{advice.advice.replace("Ã¤", "ä")}”</Quote>
+            </motion.div>
           )}
-        </Body>
-      </AnimatePresence>
-      <picture style={{ transition: "all .2s"}}>
+        </AnimatePresence>
+      </Body>
+      <picture style={{ transition: "all .2s" }}>
         <source srcSet={DesktopSeparator} media="(min-width: 570px)" />
         <img src={MobileSeparator} alt="" />
       </picture>
-      <Button aria-label="Get new advice" onClick={getAdvice} disabled={loading}>
+      <Button
+        aria-label="Get new advice"
+        onClick={getAdvice}
+        disabled={loading}
+      >
         <img src={DiceIcon} alt="Dice icon" />
       </Button>
     </Container>

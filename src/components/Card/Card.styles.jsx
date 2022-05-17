@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 import { colors } from "../../style-variables";
 
-const { neonGreen, lightCyan, grayishBlue, darkGrayishBlue, darkBlue } = colors;
+const { neonGreen, neonGreenDisabled, lightCyan, grayishBlue, darkGrayishBlue, darkBlue } = colors;
 
 const Container = styled(motion.div)`
   display: flex;
@@ -68,10 +68,15 @@ const Button = styled.button`
   border: none;
   background: ${neonGreen};
   cursor: pointer;
-  transition: box-shadow 0.2s ease-out;
+  transition: all 0.2s ease-out;
 
   &:hover {
     box-shadow: 0 0 30px ${neonGreen};
+  }
+
+  &:disabled {
+    background: ${neonGreenDisabled};
+    box-shadow: 0 0 20px ${neonGreenDisabled};
   }
 `;
 
