@@ -6,9 +6,14 @@ import { useEffect, useState } from "react";
 import { Loader } from "../Loader/Loader";
 import { AnimatePresence, motion } from "framer-motion";
 
+const defaultAdvice = {
+  id: 71,
+  advice: "It is easy to sit up and take notice, what's difficult is getting up and taking action."
+}
+
 const Card = () => {
   const [loading, setLoading] = useState(false);
-  const [advice, setAdvice] = useState({});
+  const [advice, setAdvice] = useState(defaultAdvice);
 
   const getAdvice = async () => {
     setLoading(true);
@@ -19,10 +24,6 @@ const Card = () => {
     }, 1500);
     setAdvice({ ...json.slip });
   };
-
-  useEffect(() => {
-    getAdvice();
-  }, []);
 
   return (
     <Container>
