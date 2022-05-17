@@ -50,7 +50,7 @@ const Card = () => {
         <source srcSet={DesktopSeparator} media="(min-width: 570px)" />
         <img src={MobileSeparator} alt="" />
       </picture>
-      <Button aria-label="Get new advice" onClick={getAdvice}>
+      <Button aria-label="Get new advice" onClick={getAdvice} disabled={loading}>
         <img src={DiceIcon} alt="Dice icon" />
       </Button>
     </Container>
