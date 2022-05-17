@@ -51,7 +51,7 @@ const Quote = styled(motion.p)`
 
   @media screen and (max-width: 410px) {
     margin-bottom: 2rem;
-    font-size: 28px;
+    font-size: 22px;
   }
 `;
 
