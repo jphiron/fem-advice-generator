@@ -50,7 +50,7 @@ const Card = () => {
               transition={{ duration: .2 }}
             >
               <Label>Advice #{advice.id}</Label>
-              <Quote>“{advice.advice.replace("Ã¤", "ä")}”</Quote>
+              <Quote>“{advice.advice?.replace("Ã¤", "ä")}”</Quote>
             </motion.div>
           )}
         </AnimatePresence>
