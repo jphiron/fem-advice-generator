@@ -12,7 +12,7 @@ const Container = styled(motion.div)`
   justify-content: space-evenly;
   background: ${darkGrayishBlue};
   width: 450px;
-  height: 260px;
+  height: 275px;
   padding: 2rem 2.5rem 4rem 2.5rem;
   border-radius: 15px;
   transition: all .2s;
